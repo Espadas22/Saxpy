@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
-//#include <time.h>
-//#include <sys/types.h>
+#include <time.h>
+#include <sys/types.h>
 #include <sys/time.h>
 
-#define N_pruebas 1
+#define N_pruebas 5
 
 // Variables globales para la ejecucion
 int h=0, i=0, j=0, k=0, n=0;
@@ -19,7 +19,7 @@ double L1, L2, E1, E2, T_llenado, T_resolver;
 FILE* metricas;
 
 // Cantidad de pruebas a relizar
-int pruebas[5] = {10000, 500, 1000, 5000, 10000};
+int pruebas[5] = {100, 500, 1000, 5000, 10000};
 
 void get_walltime (double* wcTime) 
 {
@@ -164,10 +164,10 @@ void relizarPrueba()
 {
     inicializaMatrices();
 
-    //get_walltime(&L1);
+    get_walltime(&L1);
     llenarMatrices();
-    //get_walltime(&L2);
-/*
+    get_walltime(&L2);
+
     // Registro del tiempo de llenado
     metricas = fopen("saxpy.txt", "a");
     T_llenado = L2 - L1;
@@ -215,8 +215,8 @@ void relizarPrueba()
     fclose(metricas);
 
     resetearMatrices();
-*/
 
+    
     // -- metodo JKI
     get_walltime(&E1);
     metodo_JKI();
